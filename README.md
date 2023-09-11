@@ -1,3 +1,7 @@
+Prometheus and Grafana:
+
+Prometheus is an open-source monitoring and alerting toolkit designed for reliability and scalability. Grafana, on the other hand, is an open-source analytics and monitoring platform that integrates well with Prometheus. You can use Prometheus to scrape metrics from your containers and applications and then visualize them in Grafana dashboards.
+
 Let's set up Prometheus and Grafana for monitoring WordPress, phpMyAdmin, and MySQL containers. 
 This step-by-step guide assumes you have Docker and Docker Compose installed on your system. We'll use Docker Compose to set up both Prometheus and Grafana containers.
 
