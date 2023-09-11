@@ -34,20 +34,24 @@ services:
       - monitoring
 
   grafana:
-    image: grafana/grafana
-    container_name: grafana
+    image: grafana/grafana:7.5.7
+    user: "472:472"  # Add this line
     ports:
-      - "3000:3000"
-    environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=adminpassword
+      - 3000:3000
+    restart: unless-stopped
     volumes:
-      - ./grafana:/var/lib/grafana
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - grafana-data:/var/lib/grafana
     networks:
       - monitoring
 
 networks:
   monitoring:
+    driver: bridge
+
+volumes:
+  grafana-data:
+    driver: local
 ```
 
 This `docker-compose.yml` file defines two services, Prometheus and Grafana, and configures their respective containers. It also sets up a Docker network named `monitoring` for communication between containers.
